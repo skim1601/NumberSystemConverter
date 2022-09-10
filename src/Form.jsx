@@ -1,13 +1,34 @@
 const Form = (props) => {
-    const onChange = (e) => {
+    const customOnChange = (e) => {
+        var legalChars = []; /* Arr to store all legal characters */
+
         if (e.target.value === ""){
-            e.target.value = 0;
+            e.value = '0';/* If the input is none, set the value to zero */
+            return false;
         }
-        if (isNaN(parseInt(e.target.value, props.base))){
-          alert("Invalid Input");
-        } else {
-          props.setNumber(e.target.value);
+
+        /* Add all number chars - For instance, 4 -> [0, 1, 2, 3] */
+        for (var i = 0; i < Math.min(props.base.value, 10); i++){
+            legalChars.push(String(i));
         }
+
+        /* End when base count is below 0. For instance, 11 runs once, 12 runs twice... */
+        var char = 'a';
+        for (var base = props.base.value - 10; base > 0; base -= 1){
+            legalChars.push(char);
+            char = String.fromCharCode(char.charCodeAt(0) + 1); /* get next char (ASCII) */
+        }
+
+        /* Check if all digit provided by the user is valid (exists in the legalChars array) */
+        e.target.value.split('').forEach(digit => {
+            if (!legalChars.includes(digit)){
+                alert("Invalid Input");
+                e.SetValue(props.number);
+                return false;
+            }
+        })
+
+        props.setNumber(e.target.value);
     }
 
     return (
@@ -16,7 +37,7 @@ const Form = (props) => {
             <input
                 type="text" 
                 value={props.number}
-                onChange={onChange}
+                onChange={customOnChange}
                 style={{marginLeft: '0.5rem'}}
             />
             </p>

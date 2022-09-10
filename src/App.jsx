@@ -30,11 +30,8 @@ const App = () => {
     if (num === ""){
       num = 0;
     }
-    if (isNaN(num = parseInt(num, base))){
-      alert("Invalid Input");
-    } else {
-      return (num >>> 0).toString(newBase);
-    }
+    num = parseInt(num, base);
+    return (num >>> 0).toString(newBase);
   }
 
   const customStyles = {
@@ -51,7 +48,7 @@ const App = () => {
       <Form number={number} base={base} setNumber={setNumber} label={base.label}/>
 
       <div className="select-box">
-        <Select options={systems} onChange={(choice) => setBase(choice)} styles={customStyles}/> 
+        <Select options={systems} onChange={(choice) => {setBase(choice); setNumber(0);}} styles={customStyles}/> 
         <p style={{margin: '0 2vw'}}>to</p>
         <Select options={systems} onChange={(choice) => setNewBase(choice)} styles={customStyles}/> 
       </div>
