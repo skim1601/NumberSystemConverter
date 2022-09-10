@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  min-height: 100%;
+  color: rgb(47, 85, 255);
+  margin-top: 20vh;
+  font-family: 'DM Sans';
+}
+
+.select-box {
+  margin: 1rem max(30vw, 5rem);
+  display: flex;
+  align-items: center;
+  margin: 3vh auto;
+}
+
+@media screen and (max-width: 850px) {
+  .select-box {
+    margin: 1rem min(30vw, 5rem);
+  }
+}
