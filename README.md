@@ -1,6 +1,24 @@
 # Number System Converter
 
-Convert your numbers into different base systems
+Convert your numbers into different base systems:
+
+Base Systems | Base
+--|--|
+Binary | 2
+Ternary | 3
+Quaternary | 4
+Quinary | 5
+Senary | 6
+Septenary | 7 
+Octal |	8
+Nonary | 9
+**Decimal** | **10**
+Undecimal | 11
+Duodecimal | 12
+Tridecimal | 13
+Tetradecimal | 14
+Pentadecimal | 15
+Hexadecimal | 16
 
 ## Link: 
 https://numbersystemconverter.netlify.app/
