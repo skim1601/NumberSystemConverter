@@ -2,12 +2,13 @@ import './App.css';
 import { useState } from 'react';
 import Select from 'react-select';
 import Form from './Form';
+import bigInt from 'big-integer';
 
 const App = () => {
   const [number, setNumber] = useState(0);
   const [base, setBase] = useState({value: 10, label: 'Decimal (10)'});
   const [newBase, setNewBase] = useState({value: 10, label: 'Decimal (10)'});
-
+  
   const systems = [
     {value: 2, label: 'Binary (2)'},
     {value: 3, label: 'Ternary (3)'},
@@ -29,9 +30,10 @@ const App = () => {
   const getNumberSystem = (num, base, newBase) => {
     if (num === ""){
       num = 0;
-    }
-    num = parseInt(num, base);
-    return (num >>> 0).toString(newBase);
+    } 
+
+    num = bigInt(num, base);
+    return num.toString(newBase);
   }
 
   const customStyles = {
@@ -49,7 +51,7 @@ const App = () => {
 
       <div className="select-box">
         <Select options={systems} onChange={(choice) => {setBase(choice); setNumber(0);}} styles={customStyles}/> 
-        <p style={{margin: '0 2vw'}}>to</p>
+        <span style={{margin: '0 2vw'}}>to</span>
         <Select options={systems} onChange={(choice) => setNewBase(choice)} styles={customStyles}/> 
       </div>
 

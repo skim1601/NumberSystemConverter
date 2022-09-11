@@ -2,11 +2,6 @@ const Form = (props) => {
     const customOnChange = (e) => {
         var legalChars = []; /* Arr to store all legal characters */
 
-        if (e.target.value === ""){
-            e.value = '0';/* If the input is none, set the value to zero */
-            return false;
-        }
-
         /* Add all number chars - For instance, 4 -> [0, 1, 2, 3] */
         for (var i = 0; i < Math.min(props.base.value, 10); i++){
             legalChars.push(String(i));
@@ -27,7 +22,6 @@ const Form = (props) => {
                 return false;
             }
         })
-
         props.setNumber(e.target.value);
     }
 
